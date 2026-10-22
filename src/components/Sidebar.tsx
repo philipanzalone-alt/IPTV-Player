@@ -121,15 +121,18 @@ export const Sidebar: React.FC = () => {
       )}
     >
       {/* Brand Header */}
-      <div className="flex items-center justify-between p-4 border-b border-white/10 h-16">
+      <div className="flex items-center justify-between p-4 border-b border-white/[0.08] h-16 bg-white/[0.01]">
         <div className="flex items-center gap-3 overflow-hidden">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-accent-600 to-indigo-400 shadow-lg shadow-accent-500/20 text-white shrink-0">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 shadow-md shadow-indigo-500/25 text-white shrink-0">
             <Radio className="w-5 h-5 animate-pulse" />
           </div>
           {!collapsed && (
             <div className="flex flex-col truncate">
-              <span className="font-bold text-base tracking-wide text-white">StreamFlow</span>
-              <span className="text-[11px] text-white/40 tracking-wider uppercase font-semibold">
+              <span className="font-bold text-base tracking-tight text-white flex items-center gap-1.5">
+                StreamFlow
+                <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">PRO</span>
+              </span>
+              <span className="text-[10px] text-white/40 tracking-wider uppercase font-semibold">
                 IPTV Studio
               </span>
             </div>
@@ -137,7 +140,7 @@ export const Sidebar: React.FC = () => {
         </div>
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 rounded-lg text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+          className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 active:scale-95 transition-all"
           title={collapsed ? 'Expand Sidebar' : 'Collapse Sidebar'}
         >
           {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
@@ -161,28 +164,28 @@ export const Sidebar: React.FC = () => {
               onClick={() => handleNavClick(item)}
               title={collapsed ? item.label : undefined}
               className={cn(
-                'group relative flex items-center w-full gap-3 px-3.5 py-3 rounded-xl text-sm font-medium transition-all duration-200',
+                'group relative flex items-center w-full gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-150 select-none active:scale-[0.98]',
                 active
-                  ? 'bg-accent-500/20 text-white border border-accent-500/50 shadow-lg shadow-accent-500/10'
-                  : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'
+                  ? 'bg-indigo-600/20 text-white border border-indigo-500/40 shadow-sm shadow-indigo-500/10 font-semibold'
+                  : 'text-slate-400 hover:text-white hover:bg-white/[0.06] border border-transparent'
               )}
             >
               <IconComponent
                 className={cn(
-                  'w-5 h-5 transition-transform duration-200 shrink-0 group-hover:scale-110',
-                  active ? 'text-accent-400' : 'text-white/50 group-hover:text-white'
+                  'w-4 h-4 transition-transform duration-200 shrink-0 group-hover:scale-110',
+                  active ? 'text-indigo-400' : 'text-slate-400 group-hover:text-white'
                 )}
               />
               {!collapsed && (
                 <span className="flex-1 text-left truncate">{item.label}</span>
               )}
               {!collapsed && item.badge && (
-                <span className="px-2 py-0.5 text-xs font-semibold rounded-full bg-white/10 text-white/70">
+                <span className="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-white/10 text-white/70">
                   {item.badge}
                 </span>
               )}
               {active && (
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-accent-500 rounded-l-full shadow-md shadow-accent-500" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-5 bg-indigo-500 rounded-l-full shadow-md shadow-indigo-500" />
               )}
             </button>
           );

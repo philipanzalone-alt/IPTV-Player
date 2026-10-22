@@ -170,7 +170,7 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
 
           <button
             onClick={stopPlayback}
-            className="p-2.5 rounded-xl bg-black/40 hover:bg-red-500/20 text-white/70 hover:text-red-400 border border-white/10 transition-colors"
+            className="p-2.5 rounded-xl bg-black/40 hover:bg-red-500/20 text-white/70 hover:text-red-400 border border-white/10 transition-colors active:scale-95"
             title="Close Player"
           >
             <X className="w-5 h-5" />
@@ -179,18 +179,18 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
       </div>
 
       {/* Bottom Controls Area (docked at the bottom) */}
-      <div className="flex flex-col bg-gradient-to-t from-black/90 via-black/60 to-transparent pointer-events-auto pt-6">
+      <div className="flex flex-col bg-gradient-to-t from-black/95 via-black/70 to-transparent pointer-events-auto pt-8">
         {/* Program Progress / Time Bar */}
         {nowProgram && (
           <div className="px-6 pb-2">
             <div className="flex items-center justify-between text-[11px] font-mono text-white/70 mb-1.5 px-0.5">
-              <span className="font-semibold text-accent-400">{formatTime(nowProgram.start_time)}</span>
+              <span className="font-semibold text-indigo-400">{formatTime(nowProgram.start_time)}</span>
               <span className="text-white/60 truncate mx-3 text-xs font-sans font-medium">{nowProgram.title}</span>
               <span className="font-semibold text-white/50">{formatTime(nowProgram.end_time)}</span>
             </div>
-            <div className="w-full h-1.5 bg-white/20 hover:h-2 rounded-full overflow-hidden backdrop-blur-sm transition-all cursor-default">
+            <div className="w-full h-1.5 bg-white/15 hover:h-2 rounded-full overflow-hidden backdrop-blur-sm transition-all cursor-default">
               <div
-                className="h-full bg-accent-500 shadow-md shadow-accent-500/50 transition-all duration-300"
+                className="h-full bg-indigo-500 shadow-md shadow-indigo-500/50 transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -200,42 +200,42 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
         {/* Bottom Controls Bar */}
         <div className="flex items-center justify-between p-6 pt-2">
           {/* Left: Playback controls */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               onClick={previousChannel}
-              className="p-2.5 rounded-xl bg-black/40 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 transition-colors"
+              className="btn-ghost bg-black/40 border border-white/10"
               title="Previous Channel (Left Arrow)"
             >
-              <SkipBack className="w-5 h-5" />
+              <SkipBack className="w-4 h-4" />
             </button>
 
             <button
               onClick={togglePlay}
-              className="w-12 h-12 rounded-2xl bg-accent-500 hover:bg-accent-600 active:bg-accent-700 text-white flex items-center justify-center shadow-lg shadow-accent-500/30 transition-all hover:scale-105"
+              className="w-12 h-12 rounded-2xl bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white flex items-center justify-center shadow-lg shadow-indigo-600/40 transition-all"
               title={isPlaying ? 'Pause (Space)' : 'Play (Space)'}
             >
               {isPlaying ? (
-                <Pause className="w-6 h-6 fill-white" />
+                <Pause className="w-5 h-5 fill-white" />
               ) : (
-                <Play className="w-6 h-6 fill-white ml-0.5" />
+                <Play className="w-5 h-5 fill-white ml-0.5" />
               )}
             </button>
 
             <button
               onClick={nextChannel}
-              className="p-2.5 rounded-xl bg-black/40 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 transition-colors"
+              className="btn-ghost bg-black/40 border border-white/10"
               title="Next Channel (Right Arrow)"
             >
-              <SkipForward className="w-5 h-5" />
+              <SkipForward className="w-4 h-4" />
             </button>
 
             {onReloadStream && (
               <button
                 onClick={onReloadStream}
-                className="p-2.5 rounded-xl bg-black/40 hover:bg-white/10 text-white/80 hover:text-white border border-white/10 transition-colors"
+                className="btn-ghost bg-black/40 border border-white/10"
                 title="Reload Stream (R)"
               >
-                <RotateCw className="w-5 h-5" />
+                <RotateCw className="w-4 h-4" />
               </button>
             )}
 
@@ -243,11 +243,11 @@ export const PlayerControls: React.FC<PlayerControlsProps> = ({
               <button
                 onClick={onClip}
                 disabled={isClipping}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-accent-500/25 hover:bg-accent-500/40 text-accent-300 hover:text-white border border-accent-500/40 transition-all font-semibold text-xs shadow-md disabled:opacity-50"
+                className="btn-secondary bg-indigo-600/20 text-indigo-300 border-indigo-500/40 hover:bg-indigo-600/30 font-semibold text-xs shadow-md"
                 title="Clip last 30 seconds of video to disk (C)"
               >
                 {isClipping ? (
-                  <Loader2 className="w-4 h-4 animate-spin text-accent-400" />
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-400" />
                 ) : (
                   <Scissors className="w-4 h-4 text-accent-400" />
                 )}

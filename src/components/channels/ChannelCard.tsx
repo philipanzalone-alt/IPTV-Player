@@ -43,29 +43,29 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
         onClick={onPlay}
         className={cn(
           'group relative flex items-center justify-between px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 select-none',
-          'bg-white/5 backdrop-blur-md border border-white/10 hover:border-white/20 hover:bg-white/[0.08]',
-          isCurrentlyPlaying && 'bg-accent-500/20 border-accent-500/50 shadow-lg shadow-accent-500/10'
+          'bg-white/[0.03] backdrop-blur-md border border-white/[0.07] hover:border-white/20 hover:bg-white/[0.07] active:scale-[0.99]',
+          isCurrentlyPlaying && 'bg-indigo-500/15 border-indigo-500/50 shadow-lg shadow-indigo-500/10'
         )}
       >
         <div className="flex items-center gap-4 min-w-0 flex-1">
           {/* Logo or placeholder */}
-          <div className="relative w-12 h-12 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center overflow-hidden shrink-0">
+          <div className="relative w-12 h-12 rounded-xl bg-black/50 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
             {channel.logo_url && !imgError ? (
               <img
                 src={channel.logo_url}
                 alt={displayName}
                 onError={() => setImgError(true)}
-                className="w-full h-full object-contain p-1"
+                className="w-full h-full object-contain p-1.5 transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             ) : (
-              <div className="flex flex-col items-center justify-center text-white/40">
+              <div className="flex flex-col items-center justify-center text-white/30">
                 <Tv className="w-5 h-5" />
               </div>
             )}
             {/* Play hover badge */}
-            <div className="absolute inset-0 bg-accent-500/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <Play className="w-5 h-5 text-white fill-white" />
+            <div className="absolute inset-0 bg-indigo-600/80 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
+              <Play className="w-5 h-5 text-white fill-white scale-90 group-hover:scale-100 transition-transform" />
             </div>
           </div>
 
@@ -155,9 +155,9 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
     <div
       onClick={onPlay}
       className={cn(
-        'group relative flex flex-col justify-between p-3.5 rounded-2xl cursor-pointer transition-all duration-200 select-none overflow-hidden',
-        'bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 hover:bg-white/[0.08] hover:scale-[1.02] shadow-xl shadow-black/25',
-        isCurrentlyPlaying && 'bg-accent-500/20 border-accent-500/50 shadow-accent-500/20'
+        'group relative flex flex-col justify-between p-3.5 rounded-2xl cursor-pointer transition-all duration-300 select-none overflow-hidden',
+        'bg-white/[0.03] backdrop-blur-xl border border-white/[0.07] hover:border-white/20 hover:bg-white/[0.08] hover:-translate-y-1 shadow-lg shadow-black/30 hover:shadow-indigo-500/10 active:scale-[0.99]',
+        isCurrentlyPlaying && 'bg-indigo-500/15 border-indigo-500/50 shadow-indigo-500/20 shadow-xl'
       )}
     >
       {/* Top row: Favorite & Hidden */}
@@ -200,13 +200,13 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
       </div>
 
       {/* Center Logo & Play Overlay */}
-      <div className="relative w-full aspect-video rounded-xl bg-black/40 border border-white/5 flex items-center justify-center p-3 overflow-hidden mb-3">
+      <div className="relative w-full aspect-video rounded-xl bg-black/50 border border-white/5 flex items-center justify-center p-3 overflow-hidden mb-3 shadow-inner">
         {channel.logo_url && !imgError ? (
           <img
             src={channel.logo_url}
             alt={displayName}
             onError={() => setImgError(true)}
-            className="w-full h-full object-contain filter drop-shadow-md"
+            className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
             loading="lazy"
           />
         ) : (
@@ -219,15 +219,15 @@ export const ChannelCard: React.FC<ChannelCardProps> = ({
         )}
 
         {/* Hover play icon */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="w-10 h-10 rounded-full bg-accent-500 text-white flex items-center justify-center shadow-lg shadow-accent-500/40">
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200">
+          <div className="w-11 h-11 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-xl shadow-indigo-600/50 scale-90 group-hover:scale-100 transition-transform duration-200">
             <Play className="w-5 h-5 fill-white ml-0.5" />
           </div>
         </div>
 
         {/* Live indicator if active */}
         {isCurrentlyPlaying && (
-          <div className="absolute bottom-2 right-2 flex items-center gap-1 px-2 py-0.5 bg-live text-white rounded text-[10px] font-bold tracking-wider uppercase animate-pulse">
+          <div className="absolute bottom-2 right-2 flex items-center gap-1.5 px-2.5 py-1 bg-red-600/90 backdrop-blur-md text-white rounded-lg text-[10px] font-bold tracking-wider uppercase shadow-md shadow-red-600/30 animate-pulse">
             <Volume2 className="w-3 h-3" />
             Playing
           </div>

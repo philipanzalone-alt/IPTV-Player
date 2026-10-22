@@ -53,7 +53,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Main Workspace Layout */}
       <div className="flex-1 flex flex-col h-full overflow-hidden relative">
         {/* Top App Bar */}
-        <header className="h-16 shrink-0 flex items-center justify-between px-6 border-b border-white/10 bg-surface-950/60 backdrop-blur-2xl z-10">
+        <header className="h-16 shrink-0 flex items-center justify-between px-6 border-b border-white/[0.08] bg-surface-950/70 backdrop-blur-2xl z-10">
           {/* Global Search Bar */}
           <div className="relative w-80 max-w-sm">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
@@ -62,12 +62,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               placeholder="Search channels, movies, series..."
               value={searchQuery}
               onChange={handleSearchChange}
-              className="w-full pl-10 pr-4 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all"
+              className="w-full pl-10 pr-9 py-2 bg-white/[0.04] border border-white/[0.08] rounded-xl text-xs text-white placeholder-white/30 focus:outline-none focus:border-indigo-500/70 focus:ring-1 focus:ring-indigo-500/50 transition-all shadow-inner"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -78,7 +78,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="flex items-center gap-3">
             {!isTauri() && (
               <div
-                className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[11px] font-medium"
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[11px] font-medium shadow-sm"
                 title="Running in Web Preview. For native SQLite, hardware decoding, and CORS bypass, run `npm run tauri dev` or open iptv-player.exe"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
@@ -90,21 +90,21 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             {selectedProvider ? (
               <div
                 onClick={() => setPage('providers')}
-                className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 cursor-pointer transition-all"
+                className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.08] cursor-pointer transition-all active:scale-95 shadow-sm"
                 title="Manage Providers"
               >
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-semibold text-white/90 truncate max-w-[150px]">
                   {selectedProvider.name}
                 </span>
-                <span className="text-[10px] uppercase font-bold text-white/40 px-1.5 py-0.5 rounded bg-white/5">
+                <span className="text-[10px] uppercase font-bold text-white/40 px-1.5 py-0.5 rounded-md bg-white/5">
                   {selectedProvider.type}
                 </span>
               </div>
             ) : (
               <button
                 onClick={() => setPage('providers')}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-accent-500/20 border border-accent-500/30 text-accent-400 text-xs font-semibold hover:bg-accent-500/30 transition-all"
+                className="btn-primary"
               >
                 <Server className="w-3.5 h-3.5" />
                 <span>Connect Provider</span>

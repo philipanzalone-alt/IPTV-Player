@@ -43,10 +43,10 @@ export const ProviderCard: React.FC<ProviderCardProps> = ({
       onClick={onSelect}
       className={cn(
         'group relative flex flex-col justify-between p-6 rounded-2xl cursor-pointer transition-all duration-300',
-        'bg-white/5 backdrop-blur-xl border shadow-xl shadow-black/40',
+        'bg-white/[0.03] backdrop-blur-xl border shadow-xl shadow-black/40 hover:-translate-y-1',
         isSelected
-          ? 'border-accent-500/60 bg-accent-500/10 ring-1 ring-accent-500/30'
-          : 'border-white/10 hover:border-white/20 hover:bg-white/[0.07]'
+          ? 'border-indigo-500/60 bg-indigo-500/10 ring-1 ring-indigo-500/30'
+          : 'border-white/[0.08] hover:border-white/20 hover:bg-white/[0.06]'
       )}
     >
       {/* Top Header */}
@@ -57,7 +57,7 @@ export const ProviderCard: React.FC<ProviderCardProps> = ({
               className={cn(
                 'w-11 h-11 rounded-xl flex items-center justify-center transition-colors',
                 isSelected
-                  ? 'bg-accent-500 text-white shadow-lg shadow-accent-500/30'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
                   : 'bg-white/10 text-white/70 group-hover:text-white group-hover:bg-white/15'
               )}
             >
@@ -69,7 +69,7 @@ export const ProviderCard: React.FC<ProviderCardProps> = ({
                   {provider.name}
                 </h3>
                 {isSelected && (
-                  <span className="flex items-center gap-1 text-[11px] font-medium text-accent-400 bg-accent-500/20 px-2 py-0.5 rounded-full border border-accent-500/30">
+                  <span className="flex items-center gap-1 text-[11px] font-medium text-indigo-400 bg-indigo-500/20 px-2 py-0.5 rounded-full border border-indigo-500/30">
                     <CheckCircle2 className="w-3 h-3" />
                     Active
                   </span>

@@ -112,18 +112,18 @@ export const CategoryList: React.FC = () => {
       {/* Search Header */}
       <div className="p-3 border-b border-white/10">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/30" />
           <input
             type="text"
             placeholder="Filter categories..."
             value={categorySearch}
             onChange={(e) => setCategorySearch(e.target.value)}
-            className="w-full pl-9 pr-7 py-2 bg-white/5 border border-white/10 rounded-xl text-xs text-white placeholder-white/30 focus:outline-none focus:border-accent-500 transition-all"
+            className="w-full pl-8 pr-7 py-1.5 bg-white/[0.04] border border-white/[0.08] rounded-xl text-xs text-white placeholder-white/30 focus:outline-none focus:border-indigo-500/70 transition-all shadow-inner"
           />
           {categorySearch && (
             <button
               onClick={() => setCategorySearch('')}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-white/40 hover:text-white"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -140,18 +140,18 @@ export const CategoryList: React.FC = () => {
             setSelectedCustomPlaylist(null);
           }}
           className={cn(
-            'w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all',
+            'w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all active:scale-[0.98]',
             isAllSelected
-              ? 'bg-accent-500/20 text-white border border-accent-500/50 shadow-md shadow-accent-500/10'
-              : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'
+              ? 'bg-indigo-600/20 text-white border border-indigo-500/40 shadow-sm shadow-indigo-500/10 font-semibold'
+              : 'text-slate-400 hover:text-white hover:bg-white/[0.05] border border-transparent'
           )}
         >
           <div className="flex items-center gap-2.5 truncate">
-            <Layers className={cn('w-4 h-4', isAllSelected ? 'text-accent-400' : 'text-white/40')} />
+            <Layers className={cn('w-4 h-4', isAllSelected ? 'text-indigo-400' : 'text-slate-500')} />
             <span className="truncate">All Channels</span>
           </div>
           {totalChannelsCount > 0 && (
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-white/60">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-white/[0.08] text-slate-300">
               {totalChannelsCount}
             </span>
           )}
@@ -171,10 +171,10 @@ export const CategoryList: React.FC = () => {
             setSelectedCustomPlaylist(null);
           }}
           className={cn(
-            'w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold transition-all',
+            'w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all active:scale-[0.98]',
             isFavoritesSelected
-              ? 'bg-accent-500/20 text-white border border-accent-500/50 shadow-md shadow-accent-500/10'
-              : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'
+              ? 'bg-amber-500/15 text-white border border-amber-500/40 shadow-sm shadow-amber-500/10 font-semibold'
+              : 'text-slate-400 hover:text-white hover:bg-white/[0.05] border border-transparent'
           )}
         >
           <div className="flex items-center gap-2.5 truncate">
@@ -287,10 +287,10 @@ export const CategoryList: React.FC = () => {
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat)}
                 className={cn(
-                  'w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-all text-left group',
+                  'w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-all text-left group active:scale-[0.98]',
                   isSelected
-                    ? 'bg-accent-500/20 text-white font-semibold border border-accent-500/50 shadow-sm'
-                    : 'text-white/60 hover:text-white hover:bg-white/5 border border-transparent'
+                    ? 'bg-indigo-600/20 text-white font-semibold border border-indigo-500/40 shadow-sm shadow-indigo-500/10'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.05] border border-transparent'
                 )}
               >
                 <span className="truncate mr-2">{cat.name}</span>
@@ -299,8 +299,8 @@ export const CategoryList: React.FC = () => {
                     className={cn(
                       'px-1.5 py-0.5 rounded-md text-[10px] font-medium transition-colors shrink-0',
                       isSelected
-                        ? 'bg-accent-500/40 text-white'
-                        : 'bg-white/5 text-white/40 group-hover:bg-white/10 group-hover:text-white/70'
+                        ? 'bg-indigo-500/40 text-white'
+                        : 'bg-white/5 text-slate-400 group-hover:bg-white/10 group-hover:text-white'
                     )}
                   >
                     {cat.channel_count}

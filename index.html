@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPTV Player</title>
+    <style>
+      html, body, #root {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0a0a0f;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error('WINDOW ERROR:', e.error || e.message);
+        try {
+          localStorage.setItem('last_js_error', JSON.stringify({
+            message: e.message,
+            stack: e.error ? e.error.stack : null,
+            time: new Date().toISOString()
+          }));
+        } catch (_) {}
+      });
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('UNHANDLED REJECTION:', e.reason);
+        try {
+          localStorage.setItem('last_unhandled_rejection', JSON.stringify({
+            reason: String(e.reason),
+            time: new Date().toISOString()
+          }));
+        } catch (_) {}
+      });
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
